@@ -17,20 +17,10 @@
 
 
 def combine(n, k):
-    ans = []
-    temp = []
-
-    def backtrace(index):
-        if len(temp) == k:
-            ans.append(temp[:])
-
-        for i in range(index, n + 1):
-            if len(temp) < k:
-                temp.append(i)
-                backtrace(i + 1)
-                temp.pop()
-    backtrace(1)
-    return ans
+    res = list()
+    nums = [i + 1 for i in range(n)]
+    
+    return res
 
 
 #     ans = []
@@ -64,6 +54,21 @@ def combine(n, k):
 #             temp.pop()
 #
 #     backtrace(n, k, 0)
+#     return ans
+
+# ans = []
+#     temp = []
+
+#     def backtrace(index):
+#         if len(temp) == k:
+#             ans.append(temp[:])
+
+#         for i in range(index, n + 1):
+#             if len(temp) < k:
+#                 temp.append(i)
+#                 backtrace(i + 1)
+#                 temp.pop()
+#     backtrace(1)
 #     return ans
 
 
