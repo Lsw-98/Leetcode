@@ -25,28 +25,41 @@ F(n) = F(n - 1) + F(n - 2)，其中 n > 1
 
 
 # 快速幂法
+# def fib(n):
+#     # 矩阵相乘
+#     def multi(a, b):
+#         res = [[0, 0], [0, 0]]
+#         for i in range(2):
+#             for j in range(2):
+#                 for k in range(2):
+#                     res[i][j] = res[i][j] + a[i][k] * b[k][j]
+#         return res
+
+#     base = [[1, 1], [1, 0]]
+#     ans = [[1, 0], [0, 1]]
+#     while n:
+#         if n & 1:
+#             ans = multi(ans, base)
+#         base = multi(base, base)
+#         n >>= 1
+#     return ans[0][1]
+
+# 动态规划
 def fib(n):
-    # 矩阵相乘
-    def multi(a, b):
-        res = [[0, 0], [0, 0]]
-        for i in range(2):
-            for j in range(2):
-                for k in range(2):
-                    res[i][j] = res[i][j] + a[i][k] * b[k][j]
-        return res
-
-    base = [[1, 1], [1, 0]]
-    ans = [[1, 0], [0, 1]]
-    while n:
-        if n & 1:
-            ans = multi(ans, base)
-        base = multi(base, base)
-        n >>= 1
-    return ans[0][1]
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    dp = [0 for _ in range(n)]
+    dp[0] = 1
+    dp[1] = 1
+    for i in range(2, n):
+        dp[i] = dp[i - 1] + dp [i - 2]
+    return dp[-1]
 
 
-# print(fib(2))
-# print(fib(3))
-# print(fib(4))
-# print(fib(10))
+print(fib(2))
+print(fib(3))
+print(fib(4))
+print(fib(10))
 print(fib(100))

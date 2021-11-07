@@ -24,14 +24,27 @@
 
 def climbStairs(n):
 
-    f1, f2 = 1, 1
-    for i in range(n):
-        f2 = f1 + f2
-        f1 = f2 - f1
-    return f1
+    # f1, f2 = 1, 1
+    # for i in range(n):
+    #     f2 = f1 + f2
+    #     f1 = f2 - f1
+    # return f1
+    
+    # 动态规划
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    dp = [0 for _ in range(n + 1)]
+    dp[0] = 1
+    dp[1] = 1
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+    return dp[-1]
 
 
 print(climbStairs(2))
 print(climbStairs(3))
 print(climbStairs(5))
 print(climbStairs(10))
+print(climbStairs(100))
