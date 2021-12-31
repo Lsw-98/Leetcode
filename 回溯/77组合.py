@@ -17,10 +17,29 @@
 
 
 def combine(n, k):
-    res = list()
-    nums = [i + 1 for i in range(n)]
-    
-    return res
+  res = []
+  path = []
+  
+  def backtrace(n, k, StartIndex):
+    if len(path) == k:
+      res.append(path[:])
+      return 
+
+    for i in range(StartIndex, n + 1):
+      path.append(i)
+      backtrace(n, k, i + 1)
+      path.pop()
+  backtrace(n, k, 1)
+  return res
+
+
+print(combine(4, 2))
+print(combine(4, 1))
+
+# res = list()
+# nums = [i + 1 for i in range(n)]
+
+# return res
 
 
 #     ans = []
@@ -72,5 +91,4 @@ def combine(n, k):
 #     return ans
 
 
-print(combine(4, 2))
-print(combine(4, 1))
+
