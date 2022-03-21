@@ -7,27 +7,38 @@
 
 
 def exchange(nums):
-  left = 0
-  right = len(nums) - 1
-  res = list()
-  while left < right:
-    if nums[left] % 2 == 0:
-      res.append(nums[left])
+  # left = 0
+  # right = len(nums) - 1
+  # res = list()
+  # while left < right:
+  #   if nums[left] % 2 == 0:
+  #     res.append(nums[left])
+  #   else:
+  #     res.insert(0, nums[left])  
+  #   if nums[right] % 2 == 0:
+  #     res.append(nums[right])
+  #   else:
+  #     res.insert(0, nums[right])  
+  #   left += 1
+  #   right -= 1
+  # if left == right:
+  #   if nums[left] % 2 == 0:
+  #     res.append(nums[left])
+  #   else:
+  #     res.insert(0, nums[left])  
+  # return res
+
+  mid = nums[len(nums) // 2]
+  left, right = [], []
+  nums.remove(mid)
+  for i in nums:
+    if i % 2 == 0:
+      right.append(i)
     else:
-      res.insert(0, nums[left])  
-    if nums[right] % 2 == 0:
-      res.append(nums[right])
-    else:
-      res.insert(0, nums[right])  
-    left += 1
-    right -= 1
-  if left == right:
-    if nums[left] % 2 == 0:
-      res.append(nums[left])
-    else:
-      res.insert(0, nums[left])  
-  return res
+      left.append(i)
+  return left + [mid] + right
 
 
-# print(exchange([1, 2, 3, 4]))
+
+print(exchange([1, 2, 3, 4]))
 print(exchange([1, 3, 5]))

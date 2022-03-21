@@ -18,12 +18,6 @@ def minNumber(nums):
 
   nums = list(map(str, nums))
   nums.sort()
-  # for i in range(len(nums) - 1):
-  #   for j in range(i + 1, len(nums)):
-  #     if mySort(nums[i], nums[j]):
-  #       temp = nums[i]
-  #       nums[i] = nums[j]
-  #       nums[j] = temp
 
   # 冒泡排序
   for i in range(len(nums)):
