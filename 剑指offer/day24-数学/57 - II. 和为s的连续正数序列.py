@@ -32,11 +32,33 @@ def findContinuousSequence(target):
   # backtrace(0, 0)
   # return res
 
-  # 滑动窗口
+  # 滑动窗口，超时，但比回溯好的多
+  # res = list()
+  # nums = [i + 1 for i in range(target)]
+  # # 滑动窗口大小
+  # for i in range(2, len(nums) // 3 + 1):
+  #   # 遍历数组
+  #   for j in range(len(nums) // 2 + 1):
+  #     if sum(nums[j:j + i]) == target:
+  #       res.append(nums[j:j + i])
+  # res.sort()
+  # return res 
+
+  # 双指针
   res = list()
-  nums = [i + 1 for i in range(target)]
-  for i in range(2, len(nums) // 2):
-    pass
+  nums = [_ + 1 for _ in range(target)]
+  left = 0
+  right = 2
+  for _ in range(len(nums)):
+    if sum(nums[left:right]) == target:
+      res.append(nums[left:right])
+      left += 1
+    elif sum(nums[left:right]) < target:
+      right += 1
+    else:
+      left += 1
+  res.sort()
+  return res
 
 
 print(findContinuousSequence(9))
