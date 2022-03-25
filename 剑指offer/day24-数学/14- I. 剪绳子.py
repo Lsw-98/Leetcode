@@ -23,5 +23,6 @@ def cuttingRope(n):
   return dp[n]
 
 
+
 print(cuttingRope(2))
 print(cuttingRope(10))
