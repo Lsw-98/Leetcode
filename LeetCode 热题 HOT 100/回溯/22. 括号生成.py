@@ -10,26 +10,30 @@
 
 
 def generateParenthesis(n):
-  res = list()
-  temp = list()
+    res = list()
+    temp = list()
 
-  def backtracking(left, right):
-    if len(temp) == n * 2:
-      res.append(''.join(temp[:]))
-      return 
-    
-    if left < n:
-      temp.append("(")
-      backtracking(left + 1, right)
-      temp.pop()
-      
-    if right < left:
-      temp.append(")")
-      backtracking(left, right + 1)
-      temp.pop()
-      
-  backtracking(0, 0)
-  return res
+    def backtrace(left, right):
+        if len(temp) == n * 2:
+            res.append(''.join(temp[:]))
+            return
+
+        if left < n:
+            temp.append("(")
+            left += 1
+            backtrace(left, right)
+            left -= 1
+            temp.pop()
+
+        if right < left:
+            temp.append(")")
+            right += 1
+            backtrace(left, right)
+            right -= 1
+            temp.pop()
+
+    backtrace(0, 0)
+    return res
 
 
 print(generateParenthesis(3))
