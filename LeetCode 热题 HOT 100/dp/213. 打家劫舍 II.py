@@ -24,8 +24,13 @@ def rob(nums):
     if len(nums) == 1:
         return nums[0]
 
-    dp1 = [0 for _ in range(len(nums) - 1)]
-    dp2 = [0 for _ in range(1, len(nums))]
+    dp1 = [0 for _ in range(len(nums) + 1)]
+    dp2 = [0 for _ in range(len(nums) + 1)]
+    for i in range(2, len(dp1)):
+        dp1[i] = max(dp1[i - 1], dp1[i - 2] + nums[i - 2])
+    for i in range(2, len(dp2)):
+        dp2[i] = max(dp2[i - 1], dp2[i - 2] + nums[i - 1])
+    return max(dp1[-1], dp2[-1])
 
 
 print(rob([1, 7, 9, 2]))
