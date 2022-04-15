@@ -31,7 +31,7 @@
  * @return {number}
  */
 var maxProfit = function (prices) {
-  res = 0
+  const res = 0
   if (prices.length === 0 || prices.length === 1) {
     return res
   }
