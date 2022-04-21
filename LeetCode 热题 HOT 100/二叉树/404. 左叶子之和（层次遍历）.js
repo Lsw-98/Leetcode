@@ -25,6 +25,7 @@
 var sumOfLeftLeaves = function (root) {
   let res = 0
   if (root === null) return res
+  if (root.left === null && root.right === null) return 0
 
   const points = []
   points.push(root)
@@ -32,8 +33,25 @@ var sumOfLeftLeaves = function (root) {
     const size = points.length
     for (let index = 0; index < size; index++) {
       const temp = points.shift()
-      if (temp.left) {
-        res += temp.left.val
+      if (temp === 0) {
+
+      } else {
+        if (temp.left === null && temp.right === null) {
+          if (index % 2 === 0) {
+            res += temp.val
+          }
+        } else {
+          if (temp.left) {
+            points.push(temp.left)
+          } else {
+            points.push(0)
+          }
+          if (temp.right) {
+            points.push(temp.right)
+          } else {
+            points.push(0)
+          }
+        }
       }
     }
   }
