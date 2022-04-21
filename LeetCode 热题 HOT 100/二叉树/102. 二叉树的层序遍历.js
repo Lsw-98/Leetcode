@@ -11,7 +11,7 @@
  * @return {number[][]}
  */
 var levelOrder = function (root) {
-  res = []
+  const res = []
   if (root === null) {
     return res
   }
@@ -24,13 +24,13 @@ var levelOrder = function (root) {
       points.push(node.right)
     }
   }
-  points = []
+  const points = []
   points.push(root)
   while (points.length !== 0) {
-    result = []
-    size = points.length
+    const result = []
+    const size = points.length
     for (let index = 0; index < size; index++) {
-      temp = points.shift()
+      const temp = points.shift()
       result.push(temp.val)
       getVal(temp)
     }
