@@ -24,24 +24,29 @@
  */
 var binaryTreePaths = function (root) {
   const res = []
-  if (root === null) return res
+  if (root === null) {
+    return res
+  }
 
-  function preOrder(node, curPath) {
+  function backtrace(node, str) {
     if (node.left === null && node.right === null) {
-      curPath += node.val
-      res.push(curPath)
+      str += node.val
+      res.push(str)
       return
     }
-    curPath += node.val + "->"
+
+    str += node.val
+    str += "->"
+
     if (node.left) {
-      preOrder(node.left, curPath)
+      backtrace(node.left, str)
     }
 
     if (node.right) {
-      preOrder(node.right, curPath)
+      backtrace(node.right, str)
     }
   }
 
-  preOrder(root, "")
+  backtrace(root, '')
   return res
 };

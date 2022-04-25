@@ -38,23 +38,25 @@
 var hasPathSum = function (root, targetSum) {
   if (root === null) return false
 
-  var backtrace = function (node, sumNum) {
-    if (node.left === null && node.right === null && sumNum === targetSum) {
+  function backtrace(node, addNum) {
+    if (node.left === null && node.right === null && addNum === targetSum) {
       return true
     }
+
     if (node.left === null && node.right === null) {
       return false
     }
 
     if (node.left) {
-      sumNum += node.left.val
-      if (backtrace(node.left, sumNum)) return true
-      sumNum -= node.left.val
+      addNum += node.left.val
+      if (backtrace(node.left, addNum)) return true
+      addNum -= node.left.val
     }
+
     if (node.right) {
-      sumNum += node.right.val
-      if (backtrace(node.right, sumNum)) return true
-      sumNum -= node.right.val
+      addNum += node.right.val
+      if (backtrace(node.right, addNum)) return true
+      addNum -= node.right.val
     }
     return false
   }
