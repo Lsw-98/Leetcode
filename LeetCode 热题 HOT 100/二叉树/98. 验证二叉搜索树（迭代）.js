@@ -31,17 +31,20 @@ var isValidBST = function (root) {
   // 中序遍历是一个有序的数组，那么就是合法的
   const res = []
 
-  function midOrder(node) {
-    if (node !== null) {
-      midOrder(node.left)
-      res.push(node.val)
-      midOrder(node.right)
+  function getVal(root) {
+    if (root !== null) {
+      getVal(root.left)
+      res.push(root.val)
+      getVal(root.right)
     }
   }
 
-  midOrder(root)
-  const ans = JSON.parse(JSON.stringify(res))
-  res.sort()
+  getVal(root)
 
-  return ans === res
+  for (let index = 1; index < res.length; index++) {
+    if (res[index] <= res[index - 1]) {
+      return false
+    }
+  }
+  return true
 };

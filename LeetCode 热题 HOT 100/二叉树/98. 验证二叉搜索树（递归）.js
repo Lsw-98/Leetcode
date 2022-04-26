@@ -28,7 +28,16 @@
  * @return {boolean}
  */
 var isValidBST = function (root) {
-  while (root) {
-    
+  // 用来记录前一个节点
+  let pre = null
+  function inorder(root) {
+    if (root === null) return true
+
+    let left = inorder(root.left)
+    if (pre !== null && pre.val >= root.val) return false
+    pre = root
+    let right = inorder(root.right)
+    return left && right
   }
+  return inorder(root)
 };
