@@ -20,7 +20,7 @@ var numTrees = function (n) {
 
   const dp = [1, 1]
 
-  for (let i = 2; i < n; i++) {
+  for (let i = 2; i <= n; i++) {
     let num = 0
     for (let j = 0; j < i; j++) {
       num += dp[j] * dp[i - j - 1]
