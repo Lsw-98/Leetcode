@@ -16,17 +16,40 @@
  * @return {boolean}
  */
 var canPartition = function (nums) {
-  nums.sort((a, b) => a - b)
+  let dp = new Array(nums.length).fill(0).map(() => {
+    return Array(nums.length).fill(0)
+  });
+  let sumNums = 0
 
-  for (let index = 1; index < nums.length; index++) {
-    let arr1 = nums.slice(0, index)
-    let arr2 = nums.slice(index)
-    if (eval(arr1.join("+")) === eval(arr2.join("+"))) {
+  for (const iterator of nums) {
+    sumNums += iterator
+  }
+
+  for (const i in dp) {
+    dp[i][i] = nums[i]
+    if (sumNums - dp[i][i] === sumNums / 2) {
       return true
+    }
+  }
+
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < dp[i].length; j++) {
+      if (dp[i][j - 1] + nums[j] <= sumNums / 2) {
+        dp[i][j] = dp[i][j - 1] + nums[j]
+        if (dp[i][j] === sumNums / 2) {
+          return true
+        }
+      } else if (dp[i][j - 1] + nums[j] > sumNums / 2) {
+        dp[i][j] = dp[i][j - 1]
+      }
     }
   }
   return false
 };
 
+
+console.log(canPartition([14, 9, 8, 4, 3, 2]));
+console.log(canPartition([1, 1]));
 console.log(canPartition([1, 5, 11, 5]));
 console.log(canPartition([1, 2, 3, 5]));
+console.log(canPartition([1, 1, 2, 2]));
