@@ -32,7 +32,25 @@ var subarraySum = function (nums, k) {
   // }
   // return count
 
-  
+  let res = 0
+  let arr = []
+  arr[0] = nums[0]
+
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] === k) {
+      res += 1
+      arr[i] = 0
+    } else {
+      arr[i] = arr[0] + nums[i]
+      if (arr[i] === k) {
+        res += 1
+        arr[i] = nums[i]
+      }
+    }
+
+  }
+
+  return res
 };
 
 
