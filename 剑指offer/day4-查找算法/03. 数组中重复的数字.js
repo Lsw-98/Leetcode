@@ -14,12 +14,21 @@
  * @return {number}
  */
 var findRepeatNumber = function (nums) {
-  let obj = {}
-  for (let i of nums) {
-    if (obj[i]) {
-      return i
+  // let obj = {}
+  // for (let i of nums) {
+  //   if (obj[i]) {
+  //     return i
+  //   } else {
+  //     obj[i] = 1
+  //   }
+  // }
+
+  let map = new Map()
+  for (let key in nums) {
+    if (map.has(nums[key])) {
+      return nums[key]
     } else {
-      obj[i] = 1
+      map.set(nums[key])
     }
   }
 };
