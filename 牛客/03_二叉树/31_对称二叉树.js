@@ -11,15 +11,17 @@ function isSymmetrical(pRoot) {
   const points = []
   points.push(pRoot)
   let flag = false
+  let num = 0
   while (points.length !== 0) {
     const result = []
     const size = points.length
     for (let i = 0; i < size; i++) {
-      if (i > 0) {
+      if (num > 0) {
         flag = true
       }
       const temp = points.shift()
       if (temp === 1001) {
+        result.push(1001)
         continue
       }
       result.push(temp.val)
@@ -37,12 +39,19 @@ function isSymmetrical(pRoot) {
     if (result.length === 1 && flag) {
       return false
     } else {
-      const res = result.reverse()
-      res === result
+      let res = JSON.parse(JSON.stringify(result))
+      res = res.reverse()
+      for (let i = 0; i < res.length; i++) {
+        if (res[i] !== result[i]) {
+          return false
+        }
+      }
     }
+    num += 1
   }
   return true
 }
+
 module.exports = {
   isSymmetrical: isSymmetrical
 };
