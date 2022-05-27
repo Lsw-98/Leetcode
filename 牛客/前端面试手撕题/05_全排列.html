@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    const _permute = string => {
+
+      const res = []
+      const temp = []
+      const used = new Array(string.length).fill(0)
+
+      function backtrace() {
+        if (temp.length === string.length) {
+          res.push(JSON.parse(JSON.stringify(temp)).join(''))
+          return
+        }
+
+        for (let i = 0; i < string.length; i++) {
+          if (used[i] === 1) {
+            continue
+          }
+
+          if (i > 0 && used[i] === 1) {
+            continue
+          }
+
+
+          temp.push(string[i])
+          used[i] = 1
+          backtrace()
+          used[i] = 0
+          temp.pop()
+        }
+      }
+      backtrace()
+      return res
+    }
+
+
+    const o = _permute('rap');
+    console.log(o);
+    const judge = o.length === 6 && o.includes('rap') && o.includes('rpa') && o.includes('arp') && o.includes('apr') && o.includes('pra') && o.includes('par');
+    console.log(judge);
+  </script>
+</body>
+
+</html>

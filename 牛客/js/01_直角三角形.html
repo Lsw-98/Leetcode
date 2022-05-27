@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <div class='triangle'></div>
+
+  <script>
+    var triangle = document.querySelector('.triangle');
+    for (let i = 0; i < 3; i++) {
+      const br = document.createElement('br')
+      const star = document.createElement('span')
+      star.innerHTML = ""
+      for (let j = 0; j < i + 1; j++) {
+        star.innerHTML += "*"
+      }
+      triangle.appendChild(star)
+      triangle.appendChild(br)
+    }
+
+  </script>
+</body>
+
+</html>

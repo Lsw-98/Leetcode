@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 
+      默认情况下，兄弟之间的外边距在垂直方向上是重叠的，可以运行如下代码看到
+      两个div之间的外边距是10px而不是20px
+      
+      外边距折叠其实非常有用，例如：在有多个段落时，如果没有外边距折叠，从第二个段落开始，所有段落的
+      间距都是最上方段落的上外边距的两倍，有了外边距折叠，段落间距才会相等
+
+      清除外边距折叠的方式：
+      1. display: inline-block
+      2. 添加浮动
+      3. 绝对定位
+    */
+
+    .top {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      background-color: orange;
+    }
+
+    .bottom {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="top"></section>
+  <section class="bottom"></section>
+</body>
+
+</html>
