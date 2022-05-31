@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    function _comma(number) {
+      let isPositive = true
+      if (number < 0) {
+        number *= -1
+        isPositive = false
+      }
+      number = String(number).split("").reverse()
+      for (let i = 0; i < number.length; i++) {
+        if (i % 4 === 0) {
+          number.splice(i, 0, ",")
+        }
+      }
+      number.splice(0, 1)
+      if (!isPositive) {
+        number.push("-")
+      }
+      return number.reverse().join("")
+    }
+
+    console.log(_comma(-123));
+    console.log(_comma(1234567));
+  </script>
+</body>
+
+</html>
