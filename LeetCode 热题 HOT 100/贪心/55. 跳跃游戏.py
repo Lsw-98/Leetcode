@@ -13,18 +13,15 @@
 # 解释：无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0 ， 所以永远不可能到达最后一个下标。
 
 
-from matplotlib.pyplot import flag
-
-
 def canJump(nums):
-  max_i = 0       # 初始化当前能到达最远的位置
-  for i, jump in enumerate(nums):   # i为当前位置，jump是当前位置的跳数
-    if max_i >= i and i + jump > max_i:  # 如果当前位置能到达，并且当前位置+跳数>最远位置  
-      max_i = i + jump  # 更新最远能到达位置
-  return max_i >= i
+    max_i = 0       # 初始化当前能到达最远的位置
+    for i, jump in enumerate(nums):   # i为当前位置，jump是当前位置的跳数
+        if max_i >= i and i + jump > max_i:  # 如果当前位置能到达，并且当前位置+跳数>最远位置
+            max_i = i + jump  # 更新最远能到达位置
+    return max_i >= i
 
 
-# print(canJump([2, 0]))
-# print(canJump([0, 2, 2]))
+print(canJump([2, 0]))
+print(canJump([0, 2, 2]))
 print(canJump([2, 3, 1, 1, 4]))
 print(canJump([3, 2, 1, 0, 4]))
