@@ -14,19 +14,38 @@
  * @return {character}
  */
 var firstUniqChar = function (s) {
-  const obj = {}
+  // const obj = {}
+  // for (let i = 0; i < s.length; i++) {
+  //   const key = s[i]
+  //   if (obj[key]) {
+  //     obj[key] += 1
+  //   } else {
+  //     obj[key] = 1
+  //   }
+  // }
+
+  // for (let item in obj) {
+  //   if (obj[item] === 1) {
+  //     return item
+  //   }
+  // }
+  // return " "
+
+  let index = []
+  let value = []
+
   for (let i = 0; i < s.length; i++) {
-    const key = s[i]
-    if (obj[key]) {
-      obj[key] += 1
+    if (index.includes(s[i])) {
+      value[index.indexOf(s[i])] += 1
     } else {
-      obj[key] = 1
+      index.push(s[i])
+      value.push(1)
     }
   }
-
-  for (let item in obj) {
-    if (obj[item] === 1) {
-      return item
+  console.log(value);
+  for (let i = 0; i < value.length; i++) {
+    if (value[i] === 1) {
+      return index[i]
     }
   }
   return " "

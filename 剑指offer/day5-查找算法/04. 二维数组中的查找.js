@@ -21,13 +21,19 @@
  * @return {boolean}
  */
 var findNumberIn2DArray = function (matrix, target) {
-  for (let i in matrix) {
-    for (let j of matrix[i]) {
-      if (j === target) {
-        return true
-      } else if (j > target) {
-        break
-      }
+  if(matrix.length === 0){
+    return true
+  }
+
+  let row = 0
+  let col = matrix[0].length - 1
+  while (col >= 0 && row <= matrix.length - 1) {
+    if (matrix[row][col] < target) {
+      row += 1
+    } else if (matrix[row][col] > target) {
+      col -= 1
+    } else {
+      return true
     }
   }
   return false

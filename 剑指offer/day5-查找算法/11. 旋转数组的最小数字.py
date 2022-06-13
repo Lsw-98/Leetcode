@@ -13,28 +13,27 @@
 
 
 def minArray(numbers):
-  if len(numbers) == 0:
-    return 
-  if len(numbers) == 1:
-    return numbers[0]
-  left = 0
-  right = len(numbers) - 1
-  index = -1
+    if len(numbers) == 0:
+        return
+    if len(numbers) == 1:
+        return numbers[0]
+    left = 0
+    right = len(numbers) - 1
+    index = -1
 
-  while left <= right:
-    if numbers[left] > numbers[left + 1]:
-      index = left + 1
-      numbers = numbers[index:] + numbers[:index]
-      break
-    elif numbers[right] < numbers[right - 1]:
-      index = right
-      numbers = numbers[index:] + numbers[:index]
-      break
-    left += 1
-    right -= 1
-  
-  return numbers[0]
-      
+    while left <= right:
+        if numbers[left] > numbers[left + 1]:
+            index = left + 1
+            numbers = numbers[index:] + numbers[:index]
+            break
+        elif numbers[right] < numbers[right - 1]:
+            index = right
+            numbers = numbers[index:] + numbers[:index]
+            break
+        left += 1
+        right -= 1
+
+    return numbers[0]
 
 
 print(minArray([3, 4, 5, 1, 2]))

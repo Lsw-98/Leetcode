@@ -31,6 +31,15 @@ var findRepeatNumber = function (nums) {
       map.set(nums[key])
     }
   }
+
+  // let value = []
+  // for (let i = 0; i < nums.length; i++) {
+  //   if (value.includes(nums[i])) {
+  //     return nums[i]
+  //   } else {
+  //     value.push(nums[i])
+  //   }
+  // }
 };
 
 console.log(findRepeatNumber([2, 3, 1, 0, 2, 5, 3]));

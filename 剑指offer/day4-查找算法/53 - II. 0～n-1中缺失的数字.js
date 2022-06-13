@@ -15,18 +15,29 @@
  * @return {number}
  */
 var missingNumber = function (nums) {
-  let arr = []
-  for (let index = 0; index <= nums.length; index++) {
-    arr[index] = index
-  }
+  // let arr = []
+  // for (let index = 0; index <= nums.length; index++) {
+  //   arr[index] = index
+  // }
 
-  for (let i in nums) {
-    if (nums[i] !== arr[i]) {
+  // for (let i in nums) {
+  //   if (nums[i] !== arr[i]) {
+  //     return arr[i]
+  //   }
+  // }
+  // return arr[arr.length - 1]
+
+  const arr = new Array(nums.length + 1).fill(1).map((item, index) => {
+    return index
+  })
+  console.log(arr);
+  for (let i = 0; i < nums.length; i++) {
+    if (arr[i] !== nums[i]) {
       return arr[i]
     }
   }
   return arr[arr.length - 1]
 };
 
-console.log(missingNumber([0, 1, 2]));
+console.log(missingNumber([0]));
 console.log(missingNumber([0, 1, 2, 3, 4, 5, 6, 7, 9]));
