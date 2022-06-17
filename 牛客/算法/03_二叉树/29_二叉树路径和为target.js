@@ -13,27 +13,19 @@
   * @return bool布尔型
   */
 function hasPathSum(root, sum) {
-  if (root === null) return false
-
-  function getPath(node, count) {
-    if (node.left === null && node.right === null && count === sum) {
-      return true
-    }
-
-    if (node.left === null && node.right === null) {
-      return false
-    }
-
-    if (node.left !== "#" && node.left !== null) {
-      return getPath(root.left, node.left.val)
-    }
-    if (node.right !== "#" && node.right !== null) {
-      return getPath(node.right, node.right.val)
-    }
-
-    return false
+  if (!root) {
+    return false;
   }
-  return getPath(root, root.val)
+
+  if (root.val == sum && root.left == null && root.right == null) {
+    return true;
+  }
+
+  if (hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 module.exports = {
   hasPathSum: hasPathSum

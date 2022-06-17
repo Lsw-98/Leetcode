@@ -35,8 +35,7 @@ var binaryTreePaths = function (root) {
       return
     }
 
-    str += node.val
-    str += "->"
+    str += node.val + "->"
 
     if (node.left) {
       backtrace(node.left, str)
