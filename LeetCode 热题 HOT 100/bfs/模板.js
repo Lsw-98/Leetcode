@@ -35,5 +35,5 @@ while (queue不空) {
 
 // 快速生成二维数组
 let dp = new Array(3).fill(0).map(() => {
-  return Array(3).fill(0)
+  return new Array(3).fill(0)
 });

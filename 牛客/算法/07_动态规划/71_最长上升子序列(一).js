@@ -20,7 +20,7 @@ function LIS(arr) {
         dp[i] = Math.max(dp[i], dp[j] + 1)
       }
     }
-    console.log(dp);
+
     if (res < dp[i]) {
       res = dp[i]
     }

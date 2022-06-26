@@ -6,24 +6,24 @@
  * @return int整型
  */
 function getLongestPalindrome(A) {
-  const dp = new Array(A.length).fill(0).map(i => {
+  const dp = new Array(A.length).fill(0).map(() => {
     return new Array(A.length).fill(0)
   })
 
   let res = 0
 
   for (let i = 0; i < dp.length; i++) {
-    let temp = []
-    for (let j = i; j < dp[i].length; j++) {
-      temp.push(A[j])
-      const tempReverse = JSON.parse(JSON.stringify(temp.reverse()))
-      temp.reverse()
-      if (tempReverse.join("") === temp.join("")) {
-        dp[i][j] = temp.length
+    for (let j = 0; j < dp[0].length; j++) {
+      if (A[i] === A[A.length - j - 1]) {
+        if (i === 0 || j === 0) {
+          dp[i][j] = 1
+        } else {
+          dp[i][j] = dp[i - 1][j - 1] + 1
+        }
       }
-    }
-    if (res < Math.max(...dp[i])) {
-      res = Math.max(...dp[i])
+      if (res < dp[i][j]) {
+        res = dp[i][j]
+      }
     }
   }
   return res
@@ -32,4 +32,5 @@ module.exports = {
   getLongestPalindrome: getLongestPalindrome
 };
 
-console.log(getLongestPalindrome("ababc"));
+// 这个通过不了
+console.log(getLongestPalindrome("acbdcbbbdbdaaccbcacdacdccababcddabddaaaaaaabdbabcdddaacabacbacbbdabdacddbbadaacbbdcbccacacdabcabacacbbbdcccacdcdcdcbcbabdcdacdddbbabcaccddddddabdacaabccdcabcbcbabacaaaccaccaddabbdadcdacdcdbaadbcabdcdcaaacbcadccbbddbaddcaddcaadcbbcbbdcbdadcddabdddcdbddbbdabaaddcaadd"));

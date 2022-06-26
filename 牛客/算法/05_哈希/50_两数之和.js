@@ -16,6 +16,9 @@ function twoSum(numbers, target) {
     return a[1] - b[1]
   })
 
+  console.log(myMap);
+  console.log(arr);
+
   let left = 0
   let right = arr.length - 1
 
