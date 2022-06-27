@@ -12,26 +12,20 @@
   * @return ListNode类
   */
 function removeNthFromEnd(head, n) {
-  let vHead = ListNode(0, head)
-  let cur = vHead
-  let pre = vHead
+  let fast = head, slow = head;
+  for (let i = 0; i < n; i++)  fast = fast.next;
+  if (fast == null) return head.next;
 
-  for (let i = 0; i < n; i++) {
-    if (cur && cur.next) {
-      cur = cur.next
-    } else {
-      break
-    }
+  let pre;
+
+  while (fast != null) {
+    fast = fast.next;
+    pre = slow;
+    slow = slow.next;
   }
 
-  while (cur && cur.next) {
-    pre = pre.next
-    cur = cur.next
-  }
-
-  pre.next = pre.next.next
-
-  return vHead
+  pre.next = slow.next;
+  return head;
 }
 module.exports = {
   removeNthFromEnd: removeNthFromEnd

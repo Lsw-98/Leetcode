@@ -13,12 +13,8 @@
   * @return ListNode类
   */
 function reverseBetween(head, m, n) {
-  // 如果m === n，则不需要翻转
-  if (m === n) {
-    return head
-  }
-  // 如果只有一个节点也不需要翻转
-  if (head === null || head.next === null) {
+  // 如果只有一个节点或m === n不需要翻转
+  if (head === null || head.next === null || m === n) {
     return head
   }
   // start指向开始反转节点的前一个节点, 即 m - 1

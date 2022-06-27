@@ -12,7 +12,6 @@ function ReverseList(pHead) {
     pre = cur
     cur = temp
   }
-
   return pre
 }
 module.exports = {
