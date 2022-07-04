@@ -11,19 +11,18 @@
  * @return {TreeNode}
  */
 var buildTree = function (preorder, inorder) {
-
   function dfs(index, arr) {
     if (index < preorder.length) {
-      const targetVal = preorder[index]
-      const targetIndex = arr.indexOf(targetVal)
-      const newRoot = new TreeNode(targetVal)
+      const targetValue = preorder[index]
+      const targetIndex = arr.indexOf(targetValue)
+      const newTree = new TreeNode(targetValue)
 
       if (targetIndex !== -1) {
         const leftArr = arr.slice(0, targetIndex)
-        newRoot.left = dfs(index + 1, leftArr)
+        newTree.left = dfs(index + 1, leftArr)
         const rightArr = arr.slice(targetIndex + 1)
-        newRoot.right = dfs(index + leftArr.length + 1, rightArr)
-        return newRoot
+        newTree.right = dfs(index + 1 + leftArr.length, rightArr)
+        return newTree
       }
     }
     return null

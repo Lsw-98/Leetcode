@@ -4,15 +4,23 @@
   * @return string字符串
   */
 function longestCommonPrefix(strs) {
-  if (strs.length === 0) {
-    return ''
+  let res = ""
+  for (let i = 0; i < strs.length; i++) {
+    let temp = strs[0][i]
+    if (temp === undefined) {
+      continue
+    }
+    for (let j = 0; j < strs.length; j++) {
+      if (temp !== strs[j][i]) {
+        return res
+      }
+    }
+    res += temp
   }
-  if (strs.length === 1) {
-    return strs[0]
-  }
-
-  
+  return res
 }
 module.exports = {
   longestCommonPrefix: longestCommonPrefix
 };
+
+console.log(longestCommonPrefix([]));
