@@ -10,6 +10,12 @@
 // 输入：m = 3, n = 1, k = 0
 // 输出：1
 
+/**
+ * @param {number} m
+ * @param {number} n
+ * @param {number} k
+ * @return {number}
+ */
+var movingCount = function (m, n, k) {
 
-const a = new Number(1)
-return a
+};

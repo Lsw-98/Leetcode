@@ -18,32 +18,27 @@
  * @return {boolean}
  */
 var exist = function (board, word) {
-  function dfs(board, r, c, index) {
-    if (r < 0 || r >= board.length || c < 0 || c >= board[0].length || index >= word.length || board[r][c] !== word[index]) {
+
+  function dfs(i, j, index) {
+    if (i >= board.length || i < 0 || j >= board[i].length || j < 0 || index >= word.length || board[i][j] !== word[index]) {
       return false
-    }
-    if (index === word.length - 1) {
+    } else if (index === word.length - 1) {
       return true
+    } else {
+      board[i][j] = "#"
+      const result = dfs(i + 1, j, index + 1) ||
+        dfs(i - 1, j, index + 1) ||
+        dfs(i, j + 1, index + 1) ||
+        dfs(i, j - 1, index + 1)
+      board[i][j] = word[index]
+      return result
     }
-
-    board[r][c] = "#"
-
-    const reslut = dfs(board, r - 1, c, index + 1) ||
-      dfs(board, r + 1, c, index + 1) ||
-      dfs(board, r, c + 1, index + 1) ||
-      dfs(board, r, c - 1, index + 1)
-
-    board[r][c] = word[index]
-    return reslut
-
   }
 
   for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[0].length; j++) {
+    for (let j = 0; j < board[i].length; j++) {
       if (board[i][j] === word[0]) {
-        if (dfs(board, i, j, 0)) {
-          return true
-        }
+        if (dfs(i, j, 0)) return true
       }
     }
   }
