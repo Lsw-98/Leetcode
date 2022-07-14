@@ -13,19 +13,10 @@
   * @return bool布尔型
   */
 function hasPathSum(root, sum) {
-  if (!root) {
-    return false;
-  }
+  if (root === null) return false
+  if (root.left === null && root.right === null && root.val === sum) return true
 
-  if (root.val == sum && root.left == null && root.right == null) {
-    return true;
-  }
-
-  if (hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val)) {
-    return true;
-  } else {
-    return false;
-  }
+  return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val)
 }
 module.exports = {
   hasPathSum: hasPathSum

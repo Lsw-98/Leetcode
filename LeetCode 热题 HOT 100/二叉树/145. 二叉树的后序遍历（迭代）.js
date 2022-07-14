@@ -11,7 +11,7 @@
  * @return {number[]}
  */
 var postorderTraversal = function (root) {
-    const res = []
+    let res = []
     if (root === null) return res
     const stack = []
     stack.push(root)
