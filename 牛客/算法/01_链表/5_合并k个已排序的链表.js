@@ -35,7 +35,6 @@ function mergeKLists(lists) {
       cur = node
     }
   }
-
   return head
 }
 module.exports = {

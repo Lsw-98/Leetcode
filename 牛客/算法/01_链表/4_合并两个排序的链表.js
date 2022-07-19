@@ -1,7 +1,8 @@
-/*function ListNode(x){
-    this.val = x;
-    this.next = null;
-}*/
+function ListNode(x) {
+  this.val = x;
+  this.next = null;
+}
+
 function Merge(pHead1, pHead2) {
   if (!pHead1) return pHead2;
   if (!pHead2) return pHead1;
@@ -17,3 +18,6 @@ function Merge(pHead1, pHead2) {
 module.exports = {
   Merge: Merge
 };
+
+
+console.log(Merge((1, 3, 5), (2, 4, 6)));
