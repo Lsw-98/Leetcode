@@ -4,10 +4,16 @@
  * @return {boolean}
  */
 var validateStackSequences = function (pushed, popped) {
-  for (let i = 1; i < popped.length - 1; i++) {
-    if (popped[i - 1] > popped[i] && popped[i + 1] > popped[i]) {
-      return false
+  const stack = []
+  let index = 0
+  for (const item of pushed) {
+    stack.push(item)
+    while (stack.length && stack[stack.length - 1] === popped[index]) {
+      stack.pop()
+      index += 1
     }
   }
-  return true
+  return stack.length === 0
 };
+
+console.log(validateStackSequences([0, 2, 1], [0, 1, 2]));
