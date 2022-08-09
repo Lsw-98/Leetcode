@@ -5,17 +5,24 @@
 var permutation = function (s) {
   const res = []
   if (s === "") return res
-  let temp = ""
+  let temp = []
+  let used = new Array(s.length).fill(0)
+
   function backtrace(index) {
     if (temp.length === 3) {
-      res.push(temp)
+      res.push(temp.join(""))
       return
     }
 
     for (let i = 0; i < s.length; i++) {
-      temp += s[i]
-      backtrace(index + 1)
-      temp -= s[i]
+      if (used[i] === 1) {
+        continue
+      }
+      used[i] = 1
+      temp.push(s[i])
+      backtrace(index)
+      temp.pop()
+      used[i] = 0
     }
   }
 
@@ -23,4 +30,5 @@ var permutation = function (s) {
   return res
 };
 
+console.log(permutation("aab"));
 console.log(permutation("abc"));
