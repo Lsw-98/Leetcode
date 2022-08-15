@@ -3,11 +3,10 @@
     this.next = null;
 }*/
 function ReverseList(pHead) {
+  let pre = null;
   let cur = pHead
-  let pre = null
-
   while (cur) {
-    let temp = cur.next
+    const temp = cur.next
     cur.next = pre
     pre = cur
     cur = temp
